@@ -9,6 +9,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class NavbarComponent {
 @Input() textBtn!: string;
 @Input() isLogin!: boolean;
+@Input() userName!: string;
+@Input() monto!: number;
 @Output() actionBtnOut: EventEmitter<string> = new EventEmitter<string>();
 
 actionBtn(value: boolean): void{  

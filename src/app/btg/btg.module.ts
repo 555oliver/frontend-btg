@@ -9,8 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [],
   imports: [
     CommonModule,
-    BtgRoutingModule,
-    HttpClientModule
+    BtgRoutingModule
   ]
 })
 export class BtgModule { }

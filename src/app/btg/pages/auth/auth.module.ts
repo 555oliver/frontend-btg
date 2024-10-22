@@ -6,6 +6,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -15,6 +18,9 @@ import { RouterModule } from '@angular/router';
     AuthRoutingModule,
     SharedModule,
     RouterModule,
-  ]
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }

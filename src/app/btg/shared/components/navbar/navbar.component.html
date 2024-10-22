@@ -1,6 +1,34 @@
-<nav class="navbar ">
+<nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
       <img src="/assets/img/btg-icon-png.png" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" *ngIf="isLogin">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Fondos Registrados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Aperturas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cancelaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Historial General</a>
+          </li>
+        </ul>
+      </div>
+      <div class="info-user p-4">
+        <ul class="navbar-nav">
+          <li class="nav-item">{{userName}}</li>
+          <li class="nav-item">{{monto | currency}}</li>
+        </ul>
+      </div>
       <form class="d-flex" role="search">
         <button class="btn btn-outline-light " type="button" (click)="actionBtn(isLogin)">{{textBtn}}</button>
       </form>
