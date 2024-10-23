@@ -16,6 +16,9 @@ export class GeneralHistoryComponent implements OnInit{
     this.transactionsAlls();
   }
 
+  /**
+   * metodo para traer todas las transacciones por el usuario en session
+   */
   public transactionsAlls(): void {
     this.mainService.allTransactions().subscribe({
       next: (response) => {

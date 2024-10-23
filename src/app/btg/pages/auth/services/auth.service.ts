@@ -11,6 +11,11 @@ export class AuthService {
   public http = inject(HttpClient);
   public urlLogin = `${environment.urlBackend}/api/v1/usuarios/login`;
 
+  /**
+   * metodo para consumir servicio de logeo
+   * @param body 
+   * @returns 
+   */
   public login(body: Login): Observable<ResponseLogin>{
     return this.http.post<ResponseLogin>(this.urlLogin, body).pipe(
       tap(response => localStorage.setItem('idUser', response._id))

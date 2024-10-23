@@ -3,7 +3,11 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { Observable, tap } from 'rxjs';
 import { ResponseLogin } from '../../auth/services/interface/response';
-import { ResponseFunds, ResponseTransactions, ResponseUsers } from './interfaces/response';
+import {
+  ResponseFunds,
+  ResponseTransactions,
+  ResponseUsers,
+} from './interfaces/response';
 import {
   BodyTransactions,
   BodyTransactionsUpdate,
@@ -16,29 +20,61 @@ export class UserService {
   public urlFunds = `${environment.urlBackend}/api/v1/fondos`;
   public urlTransactions = `${environment.urlBackend}/api/v1/transaciones`;
 
+  /**
+   * servicio para traer un usuario por ID
+   * @param id
+   * @returns
+   */
   public userById(id: string | null): Observable<ResponseLogin> {
     return this.http.get<ResponseLogin>(`${this.urlUser}/${id}`);
   }
 
-  public createUser(body: BodyUser): Observable<ResponseUsers>{
+  /**
+   * servicio para crear un usuario
+   * @param body
+   * @returns
+   */
+  public createUser(body: BodyUser): Observable<ResponseUsers> {
     return this.http.post<ResponseUsers>(`${this.urlUser}`, body);
   }
 
-  public userUpdate(id: string, body: any){
+  /**
+   * servicio para actualizar un usuairo
+   * @param id
+   * @param body
+   * @returns
+   */
+  public userUpdate(id: string, body: any) {
     return this.http.patch(`${this.urlUser}/${id}`, body);
   }
 
+  /**
+   * servicio para traer todos los fondos
+   * @returns
+   */
   public fundsAll(): Observable<ResponseFunds[]> {
     return this.http.get<ResponseFunds[]>(`${this.urlFunds}`);
   }
-
+  /**
+   * servicio para traer un fondo por ID
+   * @param id
+   * @returns
+   */
   public fundsById(id: string): Observable<ResponseFunds> {
     return this.http.get<ResponseFunds>(`${this.urlFunds}/${id}`);
   }
-
+  /**
+   * metodo para traer todas las transacciones
+   * @returns
+   */
   public allTransactions(): Observable<ResponseTransactions[]> {
     return this.http.get<ResponseTransactions[]>(`${this.urlTransactions}`);
   }
+  /**
+   * metodo para crear una trasaccion
+   * @param body
+   * @returns
+   */
   public createTransactions(
     body: BodyTransactions
   ): Observable<ResponseTransactions> {
@@ -47,7 +83,12 @@ export class UserService {
       body
     );
   }
-
+  /**
+   * metodo para actualizar trasacciones
+   * @param body
+   * @param id
+   * @returns
+   */
   public updateTransactions(
     body: BodyTransactionsUpdate,
     id: string

@@ -26,9 +26,17 @@ export class LoginComponent implements OnInit{
     })
   }
 
+  /**
+   * metodo para ir a la pantalla de registro
+   */
   public register(){
     this.router.navigateByUrl('/btg/auth/register')
   }
+
+  /**
+   * metodo para consumir servicio de logeo para la aplicacion
+   * @param data 
+   */
   public login(data: Login): void{
     this.authService.login(data).subscribe({
       next: (response => this.nextResponde(response)),
@@ -36,6 +44,10 @@ export class LoginComponent implements OnInit{
     })
   }
 
+  /**
+   * metodo para obtener la respuesta de backend y mostrar mensaje y cargar la pangina princial
+   * @param response 
+   */
   nextResponde(response: any){
     if(response){
       Swal.fire({
@@ -46,6 +58,11 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/btg/main/main-page'])
     }
   }
+
+  /**
+   * metodo para manejo de errores en el consumo del servicio
+   * @param err 
+   */
 
   errorResponse(err: any): void{
     if(err){

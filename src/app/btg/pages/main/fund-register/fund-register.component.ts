@@ -17,6 +17,9 @@ export class FundRegisterComponent implements OnInit{
     this.fundsAlls()
   }
 
+  /**
+   * metodo para traer todos los fondos
+   */
   public fundsAlls(): void{
     this.mainService.fundsAll().subscribe({
       next: (response => this.funds = response)

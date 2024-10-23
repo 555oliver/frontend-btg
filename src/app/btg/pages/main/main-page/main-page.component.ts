@@ -19,6 +19,9 @@ export class MainPageComponent {
     this.dataUser()
   }
 
+  /**
+   * metodo para traer informacion del nombre de usuario y el monto del usuario en sesion
+   */
   public dataUser(): void{
     const id = localStorage.getItem('idUser');
     this.userService.userById(id).subscribe({
@@ -30,6 +33,9 @@ export class MainPageComponent {
     })
   }
 
+  /**
+   * metodo para salir de la aplicacion principal y volver al login
+   */
   public logout(): void{
     localStorage.removeItem('idUser');
     this.router.navigateByUrl('/btg/auth/login')

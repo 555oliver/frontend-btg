@@ -6,16 +6,19 @@ import { ResponseTransactions } from '../services/interfaces/response';
   selector: 'app-cancellations',
   standalone: false,
   templateUrl: './cancellations.component.html',
-  styleUrl: './cancellations.component.scss'
+  styleUrl: './cancellations.component.scss',
 })
-export class CancellationsComponent implements OnInit{
+export class CancellationsComponent implements OnInit {
   public mainService = inject(UserService);
   public transactions: ResponseTransactions[] = [];
   ngOnInit(): void {
-
     this.transactionsAlls();
   }
 
+
+/**
+ * metodo para traer todas las transaciones por el usuario en session y filtradas por Cancelación
+ */
   public transactionsAlls(): void {
     this.mainService.allTransactions().subscribe({
       next: (response) => {

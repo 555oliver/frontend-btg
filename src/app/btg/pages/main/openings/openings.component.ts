@@ -34,6 +34,10 @@ export class OpeningsComponent implements OnInit{
     });
   }
 
+  /**
+   * metodo para cargar las transaciones por usuario logeado y solo las aperturas
+   */
+
   public transactionsAlls(): void {
     this.mainService.allTransactions().subscribe({
       next: (response) => {
@@ -46,6 +50,9 @@ export class OpeningsComponent implements OnInit{
     });
   }
 
+  /**
+   * metodo para traer todos los fondos
+   */
   public fundsAlls(): void {
     this.mainService.fundsAll().subscribe({
       next: (response) => (this.funds = response),
@@ -68,7 +75,10 @@ export class OpeningsComponent implements OnInit{
       });
     }
   }
-
+/**
+ * metodo para hacer operacion de resta cuando se crea una nueva apertura
+ * @param response 
+ */
   nextResponse(response: ResponseTransactions) {
     if (response) {
       Swal.fire({
@@ -105,6 +115,11 @@ export class OpeningsComponent implements OnInit{
     });
     return false;
   }
+
+  /**
+   * metodo para cancelar una apertura y sumarle el monto que tenia esa apertura cancelada
+   * @param idTrasaction 
+   */
 
   public cencellationTransaction(idTrasaction: string): void {
     console.log(idTrasaction);
