@@ -12,10 +12,11 @@ import { GeneralHistoryComponent } from './general-history/general-history.compo
 import { FundRegisterComponent } from './fund-register/fund-register.component';
 import { CancellationsComponent } from './cancellations/cancellations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InitialComponent } from './initial/initial.component';
 
 
 @NgModule({
-  declarations: [MainPageComponent, OpeningsComponent, GeneralHistoryComponent, FundRegisterComponent, CancellationsComponent],
+  declarations: [MainPageComponent, OpeningsComponent, GeneralHistoryComponent, FundRegisterComponent, CancellationsComponent, InitialComponent],
   imports: [
     CommonModule,
     MainRoutingModule,

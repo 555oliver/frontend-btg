@@ -5,12 +5,17 @@ import { FundRegisterComponent } from './fund-register/fund-register.component';
 import { OpeningsComponent } from './openings/openings.component';
 import { CancellationsComponent } from './cancellations/cancellations.component';
 import { GeneralHistoryComponent } from './general-history/general-history.component';
+import { InitialComponent } from './initial/initial.component';
 
 const routes: Routes = [
   {
     path: 'main-page',
     component: MainPageComponent,
     children: [
+      {
+        path: 'initial',
+        component: InitialComponent
+      },
       {
         path: 'fund-register',
         component: FundRegisterComponent
