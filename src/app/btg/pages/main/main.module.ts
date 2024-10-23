@@ -11,6 +11,7 @@ import { OpeningsComponent } from './openings/openings.component';
 import { GeneralHistoryComponent } from './general-history/general-history.component';
 import { FundRegisterComponent } from './fund-register/fund-register.component';
 import { CancellationsComponent } from './cancellations/cancellations.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { CancellationsComponent } from './cancellations/cancellations.component'
     MainRoutingModule,
     SharedModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService]
 })

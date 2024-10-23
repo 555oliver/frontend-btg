@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { ResponseFunds } from '../services/interfaces/response';
 
 @Component({
   selector: 'app-fund-register',
@@ -6,6 +8,19 @@ import { Component } from '@angular/core';
   templateUrl: './fund-register.component.html',
   styleUrl: './fund-register.component.scss'
 })
-export class FundRegisterComponent {
+export class FundRegisterComponent implements OnInit{
+
+  public mainService = inject(UserService);
+  public funds: ResponseFunds[] = [];
+
+  ngOnInit(): void {
+    this.fundsAlls()
+  }
+
+  public fundsAlls(): void{
+    this.mainService.fundsAll().subscribe({
+      next: (response => this.funds = response)
+    })
+  }
 
 }

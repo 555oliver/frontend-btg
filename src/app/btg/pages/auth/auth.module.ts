@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { UserService } from '../main/services/user.service';
 
 
 @NgModule({
@@ -21,6 +22,6 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService]
+  providers: [AuthService, UserService]
 })
 export class AuthModule { }
