@@ -25,6 +25,7 @@ export class OpeningsComponent implements OnInit{
     this.fundsAlls();
     this.transactionsAlls();
     this.mainService.userById(localStorage.getItem('idUser')!).subscribe((response => this.user_amount = response.monto ))
+
   }
 
   public dataBuilder(): void {
@@ -92,7 +93,8 @@ export class OpeningsComponent implements OnInit{
       const body = {
         monto: operation
       }
-      this.mainService.userUpdate(user_id, body).subscribe()
+      this.mainService.userUpdate(user_id, body).subscribe();
+      this.transactionsAlls();
     }
   }
 
@@ -103,8 +105,6 @@ export class OpeningsComponent implements OnInit{
     const fondo = this.funds.find(
       (value: ResponseFunds) => value._id === data.fondo
     );
-    console.log(fondo?.monto_minimo!, data.saldo);
-
     if (fondo?.monto_minimo! < data.saldo) {
       return true;
     }
@@ -148,7 +148,8 @@ export class OpeningsComponent implements OnInit{
               const body = {
                 monto: operation
               }
-              this.mainService.userUpdate(user_id, body).subscribe()
+              this.mainService.userUpdate(user_id, body).subscribe();
+              this.transactionsAlls();
             }
           },
         });

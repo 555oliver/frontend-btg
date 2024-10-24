@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseLogin } from '../../auth/services/interface/response';
 import {
   ResponseFunds,
@@ -19,6 +19,8 @@ export class UserService {
   public urlUser = `${environment.urlBackend}/api/v1/usuarios`;
   public urlFunds = `${environment.urlBackend}/api/v1/fondos`;
   public urlTransactions = `${environment.urlBackend}/api/v1/transaciones`;
+  private usuariosSubject = new BehaviorSubject<any>({});
+  usuarios$ = this.usuariosSubject.asObservable();
 
   /**
    * servicio para traer un usuario por ID
@@ -27,6 +29,19 @@ export class UserService {
    */
   public userById(id: string | null): Observable<ResponseLogin> {
     return this.http.get<ResponseLogin>(`${this.urlUser}/${id}`);
+  }
+
+  /**
+   * servicio para traer un usuario por ID
+   * @param id
+   * @returns
+   */
+  public userByIdSubject(id: string | null): any {
+    this.http
+      .get<ResponseLogin>(`${this.urlUser}/${id}`)
+      .subscribe((usuarios) => {
+        this.usuariosSubject.next(usuarios);
+      });
   }
 
   /**
@@ -45,7 +60,11 @@ export class UserService {
    * @returns
    */
   public userUpdate(id: string, body: any) {
-    return this.http.patch(`${this.urlUser}/${id}`, body);
+    return this.http.patch(`${this.urlUser}/${id}`, body).pipe(
+      tap(() => {
+        this.userByIdSubject(localStorage.getItem('idUser'));
+      })
+    );
   }
 
   /**

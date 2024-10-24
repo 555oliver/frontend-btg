@@ -17,6 +17,9 @@ export class MainPageComponent {
   public id_user!: string;
   ngOnInit(): void {
     this.dataUser();
+    this.userService.usuarios$.subscribe((usuarios) => {
+      this.monto = usuarios.monto;
+    });
   }
 
   /**
