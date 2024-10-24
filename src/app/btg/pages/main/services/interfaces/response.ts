@@ -26,8 +26,8 @@ export interface ResponseUsers {
   monto: number,
   password: string,
   fondos: string[],
-  _id: string,
-  __v: number
+  _id?: string,
+  __v?: number
 }
 
 

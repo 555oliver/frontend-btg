@@ -6,7 +6,6 @@ import { Login } from '../services/interface/login';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
-  standalone: false,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -55,7 +54,8 @@ export class LoginComponent implements OnInit{
         text: `Cardando...`,
         icon: "success"
       });
-      this.router.navigate(['/btg/main/main-page'])
+      this.router.navigate(['/btg/main/main-page/initial'])
+      Swal.close()
     }
   }
 

@@ -24,7 +24,7 @@ export class OpeningsComponent implements OnInit{
     this.dataBuilder();
     this.fundsAlls();
     this.transactionsAlls();
-    this.mainService.userById(localStorage.getItem('idUser')).subscribe((response => this.user_amount = response.monto ))
+    this.mainService.userById(localStorage.getItem('idUser')!).subscribe((response => this.user_amount = response.monto ))
   }
 
   public dataBuilder(): void {

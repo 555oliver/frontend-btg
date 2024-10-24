@@ -8,10 +8,9 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent]
-    })
-    .compileComponents();
-    
+      declarations: [NavbarComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,11 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit actionBtnOut event when actionBtn is called', () => {
+    spyOn(component.actionBtnOut, 'emit');
+    component.actionBtn(true);
+    expect(component.actionBtnOut.emit).toHaveBeenCalled();
   });
 });

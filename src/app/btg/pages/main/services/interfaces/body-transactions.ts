@@ -1,5 +1,5 @@
 export interface BodyTransactions{
-    saldo: string;
+    saldo: number;
     tipo_accion: string;
     fondo: string;
     usuario: string;

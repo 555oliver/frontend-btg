@@ -21,4 +21,6 @@ export class NavbarComponent {
   actionBtn(value: boolean): void {
     this.actionBtnOut.emit();
   }
+
+  
 }
